@@ -1,0 +1,25 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8081/eureka
+
+
+zuul:
+  routes:
+    order-server:
+      strip-prefix: false
+      path: /order/**
+      service-id: order-server
+server:
+  port: 8085
+spring:
+  application:
+    name: zuul-server
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
